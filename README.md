@@ -1,4 +1,4 @@
-# WorkHub — Phase 1 (Foundation)
+# WorkHub — Phase 1 
 
 Multi-tenant SaaS backend (Spring Boot 3). This release covers the **Phase 1** foundation: JWT auth with `tenantId` claim, tenant context, DTO validation, consistent JSON errors, and a demonstrated transactional rollback.
 
@@ -97,9 +97,8 @@ Errors use a consistent JSON shape:
 | Item | Location |
 |------|-----------|
 | Run instructions | This README |
-| API smoke tests | `scripts/curl-phase1.sh`, `scripts/curl-phase1.ps1` |
 | Postman | `postman/WorkHub-Phase1.postman_collection.json` |
-| Design note (export to PDF for submission) | `docs/DESIGN-NOTE.md` → print or use Pandoc: `pandoc docs/DESIGN-NOTE.md -o DESIGN-NOTE.pdf` |
+| Design note  |DESIGN-NOTE.pdf` |
 
 Git tag for submission (create after commit):
 
