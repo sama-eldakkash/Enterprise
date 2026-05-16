@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: workhub-app
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: workhub-app
+
+  template:
+    metadata:
+      labels:
+        app: workhub-app
+
+    spec:
+      containers:
+        - name: workhub-app
+
+          image: enterprise_ph3-app:latest
+
+          imagePullPolicy: Never
+
+          ports:
+            - containerPort: 8080
+
+          env:
+            - name: SPRING_DATASOURCE_URL
+              value: jdbc:postgresql://workhub-postgres:5432/workhub
+
+            - name: SPRING_DATASOURCE_USERNAME
+              value: postgres
+
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: password
+
+            - name: SPRING_RABBITMQ_HOST
+              value: workhub-rabbitmq
+
+            - name: SPRING_RABBITMQ_PORT
+              value: "5672"
+
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+
+            initialDelaySeconds: 20
+            periodSeconds: 10
+
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+
+            initialDelaySeconds: 30
+            periodSeconds: 15

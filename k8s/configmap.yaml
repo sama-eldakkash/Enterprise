@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+
+metadata:
+  name: workhub-config
+
+data:
+  SPRING_RABBITMQ_HOST: workhub-rabbitmq
+  SPRING_RABBITMQ_PORT: "5672"
